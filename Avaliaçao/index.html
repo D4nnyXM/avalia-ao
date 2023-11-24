@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <script async src="script.js"></script>
+    <title>Avaliação</title>
+</head>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+
+    body {
+        height: 100vh;
+    }
+
+    .principal-respostas {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        padding-bottom: 5rem;
+    }
+
+    .linha {
+        display: flex;
+        flex-direction: row;
+        gap: .5rem;
+    }
+
+    .quadradinho, .circulo {
+        width: 50px;
+        height: 50px;
+        border-radius: .5rem;
+        background-color: #00ff2a;
+        transition: background-color 0.3s;
+    }
+
+    .circulo {
+        background-color: #ff0000;
+    }
+
+    .quadrado-preto {
+        background-color: #000000 !important;
+    }
+
+    .principal-logo {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+
+    footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding-top: 20rem;
+    }
+</style>
+
+<body>
+    <section class="principal-respostas">
+        <article>
+            <h1>Questao 1</h1>
+            <p> A internet surge durante a Guerra Fria,
+                mas era militarizada e posteriormente começa a ser
+                usada como elemento de pesquisa e torna se popular após a criação
+                do Http/WWW com seus hipertextos contendo links, e usando servidores
+                Backbones e chegando ao estilo de uso que é hoje que é rápida e contendo
+                muita informação.
+            </p>
+        </article>
+
+        <article>
+            <h1>Questao 2</h1>
+            <p>
+                Os protocolos FTP(File Transfer Protocol ): Trata se de um protocolo que facilita a transferência
+                de arquivos entre computadores
+                <br>
+                SMTP(Simple Mail Transfer Protocol): Utilizado para envio de e-mail entre servidores.
+                <br>
+                SSH (Secure Shell): Esse protocolo garante uma comunicação segura
+                comum para acesso remoto.
+            </p>
+        </article>
+        <article>
+            <h1> Questao 3</h1>
+            <p>
+                Dentre as linguagens que podem ser utilizada para programação
+                web temos varias e essas são algumas: Javascript, PHP, Node.js, java
+                entre outras linguagens que sejam linguagem simples que permita a execução de scripts contidos
+                nas páginas dentro do próprio navegador.
+            </p>
+        </article>
+    </section>
+
+    <div class="linha principal-logo" onclick="criarLogo()">
+        <div class="circulo" onclick="trocarCor(this)"></div>
+        <div class="quadradinho" onclick="trocarCor(this)"></div>
+        <div class="quadradinho" onclick="trocarCor(this)"></div>
+    </div>
+
+    <footer id="resultado"></footer>
+
+    <script>
+        let contador = 0;
+
+        function criarLogo() {
+            if (contador < 10) {
+                const resultado = document.getElementById("resultado");
+                resultado.innerHTML += `
+                    <div class="linha principal-logo" onclick="trocarCor(this)">
+                        <div class="circulo"></div>
+                        <div class="quadradinho"></div>
+                        <div class="quadradinho"></div>
+                    </div>
+                `;
+                contador++;
+            } else {
+                alert("O máximo de logos é 10!");
+            }
+        }
+
+        function trocarCor(elemento) {
+            const quadradinhos = elemento.querySelectorAll('.quadradinho');
+            const circulo = elemento.querySelector('.circulo');
+
+            quadradinhos.forEach(quadradinho => {
+                quadradinho.classList.toggle('quadrado-preto');
+            });
+
+            circulo.classList.toggle('quadrado-preto');
+        }
+    </script>
+</body>
+
+</html>
